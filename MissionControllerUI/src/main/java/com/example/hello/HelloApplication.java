@@ -8,11 +8,13 @@ import org.zeromq.ZContext;
 import org.zeromq.ZMQ;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -30,7 +32,14 @@ public class HelloApplication extends Application {
         stage.setTitle("Mission Controller");
         stage.setResizable(false);
         stage.setScene(scene);
+
+        Platform.runLater(()-> {
+            stage.setWidth(665);
+            stage.setHeight(466);
+            stage.centerOnScreen();
+        });
         stage.show();
+        
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {                
                 try(ZContext ctx = new ZContext()){
