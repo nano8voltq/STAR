@@ -1,5 +1,12 @@
 package com.example.hello;
 
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.zeromq.SocketType;
+import org.zeromq.ZContext;
+import org.zeromq.ZMQ;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -9,13 +16,6 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-
-import org.zeromq.SocketType;
-import org.zeromq.ZContext;
-import org.zeromq.ZMQ;
-
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -24,7 +24,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("newGUI.fxml"));
         Parent root = fxmlLoader.load();
 
-        Scene scene = new Scene(root, 665, 466);
+        Scene scene = new Scene(root, 695, 466);
         
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setTitle("Mission Controller");

@@ -103,9 +103,12 @@ public class HelloController {
     private CheckBox visualizerCheck;
     @FXML
     private CheckBox recAPRSCheckBox;
+    @FXML
+    private CheckBox videoFeedCheck;
     
     private Stage parent;
     private Parent root;
+    Stage vidFeedStage = new Stage();
     private ArrayList<String> possibleConnections = new ArrayList<String>();
     private ArrayList<Object> fileValues = new ArrayList<Object>();
     public static ExecutorService threadExecutor = Executors.newSingleThreadExecutor();
@@ -114,6 +117,7 @@ public class HelloController {
     final private String ARISS_URL = "https://www.ariss.org/";
     final private String STAR_URL = "https://sites.google.com/view/ariss-starproject/home";
     final private String LOCALHOST_URL = "http://localhost:8080/index.html";
+    
 
     @FXML
     protected void onLinkPressed(ActionEvent event) throws IOException, URISyntaxException{
@@ -231,6 +235,15 @@ public class HelloController {
             }
         }
     }
+    @FXML
+    protected void enableVidFeed(ActionEvent event) throws Exception {
+        if (videoFeedCheck.isSelected()) {
+            Process process1 = Runtime.getRuntime().exec("qsstv");
+        } else {
+            Process process2 = Runtime.getRuntime().exec("pkill qsstv");
+        }
+    }
+
     @FXML
     protected void onCBPressed(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader();
